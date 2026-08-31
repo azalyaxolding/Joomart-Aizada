@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кыз узатуу — Айзада</title>
+
+<!--
+  =====================================================================
+  ФОТОГРАФИИ: замените файлы-плейсхолдеры в папке /images на реальные
+  faceless-кадры Айзады. Список и требуемые названия — в конце файла,
+  перед закрывающим </body>, в комментарии "СПИСОК ИЗОБРАЖЕНИЙ".
+  Аудио: положите файл фоновой музыки в /audio/music.mp3
+  =====================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+  :root{
+    --ivory: #FAF5EC;
+    --ivory-deep: #F3ECDF;
+    --maroon: #6E1423;
+    --maroon-deep: #4E0E1A;
+    --gold: #B6893F;
+    --gold-soft: #D8B571;
+    --green: #21301F;
+    --ink: #2C241D;
+    --ink-soft: #6B5E51;
+    --serif: 'Cormorant Garamond', serif;
+    --accent-font: 'Marcellus', serif;
+    --sans: 'Manrope', sans-serif;
+    --edge: clamp(24px, 7vw, 64px);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:var(--sans);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;}
+  a{color:inherit;text-decoration:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* ---------- shared decorative bits ---------- */
+  .eyebrow-orn{
+    width:56px;height:auto;margin:0 auto;display:block;
+    stroke:var(--gold); fill:none; stroke-width:1;
+  }
+  .thin-rule{
+    width:1px;height:56px;background:linear-gradient(var(--gold), transparent);
+    margin:0 auto;
+  }
+  .section{
+    position:relative;
+    padding:112px var(--edge);
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .kicker{
+    font-family:var(--accent-font);
+    letter-spacing:0.12em;
+    font-size:13px;
+    color:var(--maroon);
+  }
+
+  /* ================= SPLASH ================= */
+  #splash{
+    position:fixed;inset:0;z-index:100;
+    background:var(--ivory);
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity 1.4s ease, visibility 1.4s ease;
+  }
+  #splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .splash-inner{
+    text-align:center;
+    padding:32px;
+    max-width:420px;
+  }
+  .splash-orn{
+    width:120px;opacity:0;
+    animation:fadeIn 1.6s ease forwards 0.3s;
+  }
+  .splash-eventname{
+    font-family:var(--accent-font);
+    font-size:clamp(20px,5.5vw,26px);
+    letter-spacing:0.28em;
+    color:var(--maroon);
+    margin-top:28px;
+    opacity:0;
+    animation:fadeIn 1.6s ease forwards 1s;
+  }
+  .splash-names{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(30px,9vw,44px);
+    color:var(--ink);
+    margin-top:14px;
+    opacity:0;
+    animation:fadeIn 1.6s ease forwards 1.6s;
+  }
+  .splash-date{
+    font-family:var(--sans);
+    font-weight:300;
+    letter-spacing:0.15em;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:18px;
+    opacity:0;
+    animation:fadeIn 1.6s ease forwards 2.1s;
+  }
+  .splash-btn{
+    margin-top:44px;
+    opacity:0;
+    animation:fadeIn 1.6s ease forwards 2.6s;
+  }
+  .btn-open{
+    border:1px solid var(--gold);
+    color: #fff;
+    font-family:var(--accent-font);
+    letter-spacing:0.18em;
+    font-size:13px;
+    padding:15px 38px;
+    transition:background 0.5s ease, color 0.5s ease, letter-spacing 0.5s ease;
+  }
+  .btn-open:hover{background:var(--maroon);color:var(--ivory);letter-spacing:0.24em;}
+
+  .splash-border{
+    position:absolute; inset:16px;
+    border:1px solid rgba(182,137,63,0.5);
+    opacity:0; animation:fadeIn 1.8s ease forwards 0.1s;
+    pointer-events:none;
+  }
+  .splash-border::before{
+    content:'';
+    position:absolute; inset:7px;
+    border:1px solid rgba(182,137,63,0.28);
+  }
+  .splash-corner{
+    position:absolute; width:38px; height:38px;
+    stroke:var(--gold); fill:none; stroke-width:1;
+    opacity:0; animation:fadeIn 1.8s ease forwards 0.4s;
+  }
+  .splash-corner.tl{top:14px; left:14px;}
+  .splash-corner.tr{top:14px; right:14px; transform:scaleX(-1);}
+  .splash-corner.bl{bottom:14px; left:14px; transform:scaleY(-1);}
+  .splash-corner.br{bottom:14px; right:14px; transform:scale(-1,-1);}
+
+  @keyframes fadeIn{ to{opacity:1;} }
+
+  /* ================= HERO ================= */
+  #hero{
+    position:relative;
+    height:100svh;
+    min-height:640px;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute;inset:0;
+    clip-path:inset(0 0 100% 0);
+    transition:clip-path 2.6s cubic-bezier(.16,.75,.22,1) 0.2s;
+  }
+  #hero.revealed .hero-media{clip-path:inset(0 0 0 0);}
+  .hero-media img{
+    height:100%;
+    transform:scale(1.12);
+    transition:transform 3.6s cubic-bezier(.16,.75,.22,1) 0.2s;
+  }
+  #hero.revealed .hero-media img{transform:scale(1);}
+  .hero-media::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(20,10,10,0.05) 0%, rgba(20,10,10,0.1) 55%, rgba(15,8,8,0.55) 100%);
+  }
+  .hero-orn-frame{
+    position:absolute; inset:18px;
+    border:1px solid rgba(250,245,236,0.55);
+    pointer-events:none;
+    opacity:0; transition:opacity 1.6s ease 1.6s;
+  }
+  #hero.revealed .hero-orn-frame{opacity:1;}
+  .hero-text{
+    position:relative;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    text-align:center;
+    padding:0 24px 56px;
+    color:var(--ivory);
+  }
+  .hero-kicker{
+    font-family:var(--accent-font);
+    font-size:13px;
+    letter-spacing:0.3em;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 1.2s ease, transform 1.2s ease;
+  }
+  .hero-name-main{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(52px,15vw,108px);
+    line-height:0.95;
+    margin-top:10px;
+    opacity:0; transform:translateY(20px);
+    transition:opacity 1.4s ease, transform 1.4s ease;
+  }
+  .hero-name-sub{
+    font-family:var(--sans);
+    font-weight:300;
+    letter-spacing:0.35em;
+    font-size:clamp(13px,3vw,16px);
+    margin-top:16px;
+    opacity:0; transform:translateY(14px);
+    transition:opacity 1.4s ease, transform 1.4s ease;
+  }
+  .hero-date{
+    font-family:var(--accent-font);
+    font-size:15px;
+    letter-spacing:0.14em;
+    margin-top:26px;
+    padding-top:20px;
+    border-top:1px solid rgba(250,245,236,0.4);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 1.4s ease, transform 1.4s ease;
+  }
+  #hero.revealed .hero-kicker,
+  #hero.revealed .hero-name-main,
+  #hero.revealed .hero-name-sub,
+  #hero.revealed .hero-date{opacity:1; transform:translateY(0);}
+  #hero.revealed .hero-kicker{transition-delay:1.9s;}
+  #hero.revealed .hero-name-main{transition-delay:2.1s;}
+  #hero.revealed .hero-name-sub{transition-delay:2.5s;}
+  #hero.revealed .hero-date{transition-delay:2.8s;}
+
+  .scroll-cue{
+    position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+    width:1px;height:38px;
+    background:linear-gradient(rgba(250,245,236,0.9), transparent);
+    opacity:0;
+  }
+  #hero.revealed .scroll-cue{animation:fadeIn 1.5s ease forwards 3.4s;}
+
+  /* ================= INTRO ================= */
+  #intro{
+    text-align:center;
+    padding:120px var(--edge) 100px;
+  }
+  .intro-text{
+    font-family:var(--serif);
+    font-size:clamp(21px,3.4vw,28px);
+    line-height:1.75;
+    font-weight:400;
+    color:var(--ink);
+    max-width:680px;
+    margin:36px auto 0;
+  }
+
+  /* ================= NAMES SECTION ================= */
+  #names{
+    padding:80px var(--edge) 140px;
+    text-align:center;
+    position:relative;
+  }
+  .names-stack{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    line-height:0.86;
+  }
+  .name-bride{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(78px,22vw,190px);
+    color:var(--maroon);
+  }
+  .name-connector{
+    font-family:var(--accent-font);
+    font-size:14px;
+    letter-spacing:0.5em;
+    color:var(--gold);
+    margin:18px 0;
+  }
+  .name-groom{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(28px,6vw,44px);
+    color:var(--ink-soft);
+    letter-spacing:0.04em;
+  }
+
+  /* ================= KYZ UZATUU SECTION ================= */
+  #meaning{
+    background:var(--ivory-deep);
+    text-align:center;
+    padding:120px var(--edge);
+    position:relative;
+  }
+  .meaning-title{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(38px,8vw,58px);
+    color:var(--maroon);
+  }
+  .meaning-body{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:16px;
+    line-height:2;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:34px auto 0;
+  }
+  .meaning-divider{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin:44px auto 0;
+  }
+  .meaning-divider span{width:40px;height:1px;background:var(--gold);}
+  .meaning-divider svg{width:16px;height:16px;stroke:var(--gold);fill:none;}
+
+  /* ================= GALLERY ================= */
+  #gallery{
+    padding:130px 0;
+  }
+  .gallery-head{
+    text-align:center;
+    padding:0 var(--edge) 70px;
+  }
+  .gallery-head h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(32px,6.5vw,46px);
+    color:var(--ink);
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:6px;
+    padding:0 6px;
+  }
+  .g-item{
+    position:relative;
+    overflow:hidden;
+    background:var(--ivory-deep);
+  }
+  .g-item img{
+    transform:scale(1.15);
+    transition:transform 2.4s cubic-bezier(.16,.75,.22,1);
+    filter:saturate(0.96);
+  }
+  .g-item.aos-animate img{transform:scale(1);}
+  .g-tall{aspect-ratio:3/4.4;}
+  .g-wide{aspect-ratio:16/10;}
+  .g-square{aspect-ratio:1/1;}
+  .g-caption{
+    position:absolute; left:18px; bottom:16px;
+    color:var(--ivory);
+    font-family:var(--accent-font);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
+  }
+  @media (min-width:720px){
+    .gallery-grid{grid-template-columns:repeat(6,1fr);}
+    .g-item:nth-child(1){grid-column:span 4;}
+    .g-item:nth-child(2){grid-column:span 2;}
+    .g-item:nth-child(3){grid-column:span 2;}
+    .g-item:nth-child(4){grid-column:span 2;}
+    .g-item:nth-child(5){grid-column:span 2;}
+    .g-item:nth-child(6){grid-column:span 4;}
+    .g-item:nth-child(7){grid-column:span 3;}
+    .g-item:nth-child(8){grid-column:span 3;}
+  }
+
+  /* ================= DATE / LOCATION ================= */
+  #details{
+    background:var(--maroon);
+    color:var(--ivory);
+    padding:130px var(--edge);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  #details::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(216,181,113,0.14), transparent 60%);
+    pointer-events:none;
+  }
+  .details-date{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(46px,11vw,88px);
+    letter-spacing:0.02em;
+  }
+  .details-time{
+    font-family:var(--accent-font);
+    font-size:20px;
+    letter-spacing:0.2em;
+    color:var(--gold-soft);
+    margin-top:8px;
+  }
+  .details-row{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    margin-top:64px;
+  }
+  .details-label{
+    font-family:var(--accent-font);
+    font-size:12px;
+    letter-spacing:0.3em;
+    color:var(--gold-soft);
+  }
+  .details-address{
+    font-family:var(--serif);
+    font-size:clamp(20px,4.5vw,26px);
+    font-weight:500;
+    max-width:420px;
+  }
+  .venue-mark{
+    width:64px;height:64px;
+    margin:36px auto 0;
+    stroke:var(--gold-soft);
+    fill:none;
+    stroke-width:0.8;
+    opacity:0.85;
+  }
+
+  /* ================= HOSTS ================= */
+  #hosts{
+    text-align:center;
+    padding:120px var(--edge);
+  }
+  .hosts-label{
+    font-family:var(--accent-font);
+    font-size:13px;
+    letter-spacing:0.3em;
+    color:var(--maroon);
+  }
+  .hosts-names{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(34px,7.5vw,54px);
+    margin-top:22px;
+    color:var(--ink);
+  }
+  .hosts-note{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:14px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin-top:20px;
+  }
+
+  /* ================= FINAL ================= */
+  #final{
+    background:var(--ivory-deep);
+    text-align:center;
+    padding:130px var(--edge) 90px;
+  }
+  .final-text{
+    font-family:var(--serif);
+    font-size:clamp(22px,4vw,30px);
+    line-height:1.8;
+    color:var(--ink);
+    max-width:620px;
+    margin:0 auto;
+  }
+  .rsvp-wrap{
+    margin-top:56px;
+  }
+  .btn-rsvp{
+    display:inline-block;
+    background:#3FA24A;
+    color:#fff;
+    font-family:var(--accent-font);
+    font-size:14px;
+    letter-spacing:0.1em;
+    padding:20px 40px;
+    border-radius:2px;
+    box-shadow:0 14px 32px -12px rgba(63,162,74,0.55);
+    transition:transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  }
+  .btn-rsvp:hover{transform:translateY(-2px); background:#379a42; box-shadow:0 18px 38px -12px rgba(63,162,74,0.6);}
+  .rsvp-sub{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+  }
+
+  footer{
+    text-align:center;
+    padding:48px var(--edge) 100px;
+    font-family:var(--accent-font);
+    font-size:11px;
+    letter-spacing:0.2em;
+    color:var(--ink-soft);
+  }
+
+  /* ================= MUSIC CONTROL ================= */
+  #music-toggle{
+    position:fixed;
+    right:18px; bottom:18px;
+    width:50px;height:50px;
+    border-radius:50%;
+    background:rgba(250,245,236,0.9);
+    border:1px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    z-index:60;
+    box-shadow:0 8px 24px -8px rgba(0,0,0,0.25);
+    opacity:0; visibility:hidden;
+    transition:opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #music-toggle.show{opacity:1; visibility:visible;}
+  #music-toggle svg{width:20px;height:20px;stroke:var(--maroon);fill:none;stroke-width:1.4;}
+  .bar{
+    position:absolute;
+    width:2px; background:var(--maroon);
+    bottom:15px; border-radius:1px;
+  }
+  #music-toggle.playing .bar{animation:eq 1s ease-in-out infinite alternate;}
+  #music-toggle:not(.playing) .bar{height:4px !important;}
+  .bar1{left:16px; animation-delay:0s; height:10px;}
+  .bar2{left:22px; animation-delay:0.2s; height:16px;}
+  .bar3{left:28px; animation-delay:0.4s; height:8px;}
+  @keyframes eq{ from{transform:scaleY(0.4);} to{transform:scaleY(1);} }
+
+
+  /* ================= SPLASH PHOTO ================= */
+#splash{
+  overflow:hidden;
+}
+
+.splash-photo{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.splash-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:brightness(0.52);
+}
+
+.splash-photo::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(30,10,10,0.18) 0%,
+      rgba(30,10,10,0.35) 50%,
+      rgba(30,10,10,0.72) 100%
+    );
+}
+
+.splash-inner{
+  position:relative;
+  z-index:2;
+  color:var(--ivory);
+}
+
+.splash-eventname{
+  color:var(--ivory);
+}
+
+.splash-names{
+  color:var(--ivory);
+}
+
+.splash-date{
+  color:rgba(250,245,236,0.85);
+}
+
+.splash-border{
+  z-index:3;
+}
+
+.splash-corner{
+  z-index:4;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= SPLASH ================= -->
+<div id="splash">
+  <div class="splash-photo">
+    <img src="./images/splash-aizada.jpg" alt="">
+  </div>
+  <div class="splash-inner">
+    <svg class="splash-orn" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 30 Q30 5 60 30 Q90 55 115 30" stroke="#B6893F" stroke-width="0.8" fill="none"/>
+      <circle cx="60" cy="30" r="3" fill="#B6893F"/>
+      <path d="M40 30 Q50 20 60 30 Q70 40 80 30" stroke="#B6893F" stroke-width="0.6" fill="none"/>
+    </svg>
+    <div class="splash-eventname">КЫЗ УЗАТУУ</div>
+    <div class="splash-names">Жоомарт &amp; Айзада</div>
+    <div class="splash-date">03.10.2026 · 11:00</div>
+    <div class="splash-btn">
+      <button class="btn-open" id="openBtn">АЧУУ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <div class="hero-media">
+    <img src="./images/hero-aizada-back.jpg" alt="Айзада в традиционном красном кыргызском наряде, вид со спины">
+  </div>
+  <div class="hero-orn-frame"></div>
+  <div class="hero-text">
+    <div class="hero-kicker">КЫЗ УЗАТУУ</div>z
+    <div class="hero-name-main">Айзада</div>
+    <div class="hero-name-sub">ЖООМАРТ &amp; АЙЗАДА</div>
+    <div class="hero-date">03.10.2026 · 11:00</div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section id="intro">
+  <div class="kicker" data-aos="fade-up">САЛАМ</div>
+  <p class="intro-text" data-aos="fade-up" data-aos-delay="150">
+    Бул күн — Айзаданын өз үйүнөн жаңы үй-бүлөгө узатылган өзгөчө күнү.
+    Ата-эне, туугандар жана жакындар бул кубанычты жана сыймыкты силер менен
+    бөлүшкүсү келет. Ушул маанилүү учурда жаныбызда болгонуңарды каалайбыз.
+  </p>
+</section>
+
+<!-- ================= NAMES ================= -->
+<section id="names">
+  <div class="names-stack">
+    <div class="name-bride" data-aos="fade" data-aos-duration="1400">Айзада</div>
+    <div class="name-connector" data-aos="fade" data-aos-delay="200">ЖООМАРТ &amp;</div>
+  </div>
+</section>
+
+<!-- ================= MEANING ================= -->
+<section id="meaning">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="kicker" data-aos="fade-up">САЛТ</div>
+    <h2 class="meaning-title" data-aos="fade-up" data-aos-delay="150">Кыз узатуу</h2>
+    <p class="meaning-body" data-aos="fade-up" data-aos-delay="300">
+      Бул — Айзаданын ата конушунан, туулуп-өскөн үйүнөн жаңы үй-бүлөгө
+      узатылган салттуу той. Кыргыз элинин байыркы каадасы боюнча,
+      бул күндө үй-бүлө өз кызын сый-урмат менен, батасын берип узатат.
+    </p>
+    <div class="meaning-divider" data-aos="fade-up" data-aos-delay="450">
+      <span></span>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<!-- <section id="gallery">
+  <div class="gallery-head">
+    <div class="kicker" data-aos="fade-up">ОБРАЗ</div>
+    <h2 data-aos="fade-up" data-aos-delay="150">Салттуу көрк</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item g-tall" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g1-back-red-dress.jpg" alt="Айзада кызыл салттуу кийимде, аркасынан">
+      <div class="g-caption">Кызыл кийим</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g2-chachpak-cholpu.jpg" alt="Чачпак жана чолпу — күмүш каймалдар жакын планда">
+      <div class="g-caption">Чачпак · Чолпу</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g3-velvet-embroidery.jpg" alt="Кызыл баркыт жана алтын саймалар жакын планда">
+      <div class="g-caption">Саймалар</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g4-hands-rings.jpg" alt="Күмүш шакектери менен колдор">
+      <div class="g-caption">Каймалдар</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g5-braids.jpg" alt="Узун чачтар, салттуу элементтер">
+      <div class="g-caption">Чачтар</div>
+    </div>
+    <div class="g-item g-wide" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g6-elechek-closeup.jpg" alt="Элечек башкийим жакын планда">
+      <div class="g-caption">Элечек</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g7-fabric-detail.jpg" alt="Кездеменин жана оюмдун деталдары">
+      <div class="g-caption">Оюм</div>
+    </div>
+    <div class="g-item g-square" data-aos="zoom-out" data-aos-duration="1600">
+      <img loading="lazy" src="images/g8-doorway-farewell.jpg" alt="Айзада эшиктин жанында, үйдөн узатылуу учуру, беети көрүнбөйт">
+      <div class="g-caption">Коштошуу</div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ================= DETAILS ================= -->
+<section id="details">
+  <div class="kicker" style="color:var(--gold-soft)" data-aos="fade-up">КАЧАН</div>
+  <div class="details-date" data-aos="fade-up" data-aos-delay="150">03 ОКТЯБРЬ</div>
+  <div class="details-time" data-aos="fade-up" data-aos-delay="250">2026 · 11:00</div>
+
+  <div class="details-row" data-aos="fade-up" data-aos-delay="350">
+    <div class="details-label">ДАРЕГИ</div>
+    <div class="details-address">Алма-Бак району,<br>Чыргайлуу көчөсү 35</div>
+  </div>
+
+  <svg class="venue-mark" viewBox="0 0 64 64" data-aos="fade-up" data-aos-delay="450">
+    <path d="M32 6 L54 20 V44 L32 58 L10 44 V20 Z"/>
+    <circle cx="32" cy="32" r="7"/>
+  </svg>
+</section>
+
+<!-- ================= HOSTS ================= -->
+<section id="hosts">
+  <div class="hosts-label" data-aos="fade-up">ТОЙ ЭЭЛЕРИ</div>
+  <div class="hosts-names" data-aos="fade-up" data-aos-delay="150">Райымбек &amp; Венера</div>
+  <div class="hosts-note" data-aos="fade-up" data-aos-delay="300">Кыздарынын узатуу тоюна чакырышат</div>
+</section>
+
+<!-- ================= FINAL / RSVP ================= -->
+<section id="final">
+  <p class="final-text" data-aos="fade-up">
+    Биз үчүн бул өзгөчө күндө сиздердин катышууңуздар чоң мааниге ээ.
+    Сиздерди кыз узатуу тоюбузда күтөбүз.
+  </p>
+  <div class="rsvp-wrap" data-aos="fade-up" data-aos-delay="200">
+    <a href="#" id="rsvpBtn" class="btn-rsvp">КАТЫШУУНУ ЫРАСТОО</a>
+    <div class="rsvp-sub">WhatsApp аркылуу ырастоо</div>
+  </div>
+</section>
+
+<footer>ЖООМАРТ &amp; АЙЗАДА · 03.10.2026</footer>
+
+<!-- ================= MUSIC CONTROL ================= -->
+<button id="music-toggle" aria-label="Музыканы күйгүзүү/өчүрүү">
+  <svg viewBox="0 0 24 24" id="noteIcon"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <div class="bar bar1" style="display:none"></div>
+  <div class="bar bar2" style="display:none"></div>
+  <div class="bar bar3" style="display:none"></div>
+</button>
+<audio id="bgMusic" loop preload="none">
+  <source src="audio/music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // ---------- CONFIGURABLE DATA ----------
+  const HOST_WHATSAPP_NUMBER = "996700000000"; // замените на реальный номер той ээлери, формат без "+" и пробелов
+  const RSVP_MESSAGE = "Саламатсызбы! Кыз узатуу тоюңуздарга чакырганыңыздар үчүн чоң рахмат. 03.10.2026 күнү саат 11:00дө катышууга келебиз.";
+
+  AOS.init({ duration: 1000, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+  const splash = document.getElementById('splash');
+  const openBtn = document.getElementById('openBtn');
+  const hero = document.getElementById('hero');
+  const music = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('music-toggle');
+  const bars = musicToggle.querySelectorAll('.bar');
+  const noteIcon = document.getElementById('noteIcon');
+
+openBtn.addEventListener('click', async () => {
+
+  // 1. Сразу открываем приглашение
+  splash.classList.add('hide');
+  hero.classList.add('revealed');
+  musicToggle.classList.add('show');
+
+  // 2. Возвращаем прокрутку
+  document.body.style.overflow = 'auto';
+
+  // 3. Пробуем запустить музыку отдельно
+  music.volume = 0.55;
+
+  try {
+    await music.play();
+
+    musicToggle.classList.add('playing');
+    noteIcon.style.display = 'none';
+
+    bars.forEach(bar => {
+      bar.style.display = 'block';
+    });
+
+  } catch (error) {
+    // Safari/iPhone может запретить autoplay.
+    // Сайт при этом уже открыт и продолжает работать.
+    musicToggle.classList.remove('playing');
+    noteIcon.style.display = 'block';
+
+    bars.forEach(bar => {
+      bar.style.display = 'none';
+    });
+  }
+});
+
+  musicToggle.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicToggle.classList.add('playing');
+      noteIcon.style.display = 'none';
+      bars.forEach(b => b.style.display = 'block');
+    } else {
+      music.pause();
+      musicToggle.classList.remove('playing');
+      noteIcon.style.display = 'block';
+      bars.forEach(b => b.style.display = 'none');
+    }
+  });
+
+  document.getElementById('rsvpBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = `https://wa.me/${HOST_WHATSAPP_NUMBER}?text=${encodeURIComponent(RSVP_MESSAGE)}`;
+    window.open(url, '_blank');
+  });
+
+  // lock scroll until opened
+  document.body.style.overflow = 'hidden';
+</script>
+
+<!--
+=====================================================================
+СПИСОК ИЗОБРАЖЕНИЙ (положите файлы в папку /images рядом с index.html)
+
+hero-aizada-back.jpg      — главный кадр, Айзада со спины, красный наряд (вертикальный, крупный)
+g1-back-red-dress.jpg     — со спины, красное платье, вертикальный
+g2-chachpak-cholpu.jpg    — чачпак и чолпу крупным планом
+g3-velvet-embroidery.jpg  — бархат и золотая вышивка
+g4-hands-rings.jpg        — руки и кольца
+g5-braids.jpg             — косы
+g6-elechek-closeup.jpg    — элечек крупным планом (горизонтальный)
+g7-fabric-detail.jpg      — деталь ткани/орнамента
+g8-doorway-farewell.jpg   — у двери/окна, символ прощания
+
+Все фото — без лица. Рекомендуемое разрешение: не менее 1600px по длинной стороне,
+сжатые в JPEG (качество 80–85%) для быстрой загрузки на мобильных.
+
+АУДИО: /audio/music.mp3 — мягкая этническая/традиционная фоновая музыка.
+
+WHATSAPP: замените HOST_WHATSAPP_NUMBER в конце файла на реальный номер
+той ээлери в формате 996XXXXXXXXX (без +, без пробелов).
+=====================================================================
+-->
+
+</body>
+</html>
