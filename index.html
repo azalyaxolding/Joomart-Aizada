@@ -257,20 +257,260 @@
   #hero.revealed .scroll-cue{animation:fadeIn 1.5s ease forwards 3.4s;}
 
   /* ================= INTRO ================= */
+
+/* ================= INTRO — KYRGYZ ORNAMENT ================= */
+
+#intro{
+  position:relative;
+  overflow:hidden;
+
+  background:#fff;
+  color:#800020;
+
+  text-align:center;
+
+  padding:130px var(--edge) 125px;
+}
+
+.intro-inner{
+  position:relative;
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+
+/* ---------- Верхний заголовок ---------- */
+
+.intro-kicker{
+ font-family:var(--sans);
+
+  font-size:22px;
+  font-weight:500;
+
+  letter-spacing:.22em;
+
+  color:#800020;
+}
+
+
+/* ---------- Орнаменты ---------- */
+
+.intro-ornament{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  color:#800020;
+}
+
+.intro-ornament svg{
+  display:block;
+
+  stroke:#800020;
+  fill:none;
+
+  stroke-width:1.15;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.intro-ornament-top{
+  margin:25px auto 27px;
+}
+
+.intro-ornament-top svg{
+  width:230px;
+  height:auto;
+}
+
+.intro-ornament-bottom{
+  margin:29px auto 0;
+}
+
+.intro-ornament-bottom svg{
+  width:190px;
+  height:auto;
+}
+
+
+/* ---------- Вторая надпись ---------- */
+
+.intro-subtitle{
+font-family:var(--sans);
+
+  font-size:19px;
+  font-weight:500;
+
+  letter-spacing:.18em;
+
+  color:#800020;
+}
+
+
+/* ---------- Имя ---------- */
+
+.intro-name-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:25px;
+
+  margin-top:40px;
+}
+
+.intro-name{
+  flex:0 0 auto;
+
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+
+  /* НЕ МЕНЯЕМ РАЗМЕР АЯНАНЫН */
+  font-size:clamp(70px,13vw,130px);
+
+  line-height:.8;
+
+  letter-spacing:-.025em;
+
+  color:#800020;
+}
+
+
+/* ---------- Боковые кыргызские узоры ---------- */
+
+.intro-side-ornament{
+  width:125px;
+  flex:0 1 125px;
+}
+
+.intro-side-ornament svg{
+  display:block;
+  width:100%;
+  height:auto;
+
+  stroke:#800020;
+  fill:none;
+
+  stroke-width:1.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.intro-side-ornament.left{
+  transform:scaleX(-1);
+}
+
+
+/* ---------- Основной текст ---------- */
+
+.intro-message{
+  margin:48px auto 0;
+
+  font-family:var(--sans);
+
+  font-size:17px;
+  font-weight:400;
+
+  line-height:2;
+
+  letter-spacing:.08em;
+
+  color:#800020;
+}
+
+.intro-message div{
+  margin:0;
+}
+
+
+/* ---------- Маленький финальный символ ---------- */
+
+.intro-bottom-symbol{
+  margin:34px auto 0;
+
+  opacity:.8;
+}
+
+.intro-bottom-symbol svg{
+  width:30px;
+  height:30px;
+
+  stroke:#800020;
+  fill:none;
+
+  stroke-width:1;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
   #intro{
-    text-align:center;
-    padding:60px var(--edge) 100px;
-  }
-  .intro-text{
-    font-family:var(--serif);
-    font-size:clamp(21px,3.4vw,28px);
-    line-height:1.75;
-    font-weight:400;
-    color:var(--ink);
-    max-width:680px;
-    margin:36px auto 0;
+    padding:61px 20px 40px;
   }
 
+   .intro-kicker{
+    font-size:17px;
+    letter-spacing:.14em;
+  }
+
+  .intro-ornament-top{
+    margin:22px auto 24px;
+  }
+
+  .intro-ornament-top svg{
+    width:190px;
+  }
+
+  .intro-subtitle{
+   font-size:15px;
+    letter-spacing:.12em;
+  }
+
+  .intro-name-row{
+    gap:7px;
+    margin-top:35px;
+  }
+
+  .intro-name{
+    /*
+      Аянанын оставляем главным элементом
+    */
+    font-size:clamp(55px,17vw,88px);
+  }
+
+  .intro-side-ornament{
+    width:58px;
+    flex:0 1 58px;
+  }
+
+  .intro-ornament-bottom{
+    margin-top:28px;
+  }
+
+  .intro-ornament-bottom svg{
+    width:155px;
+  }
+
+  .intro-message{
+    /*
+      Основной текст теперь заметнее
+    */
+     font-size:17px;
+    letter-spacing:.04em;
+    line-height:1.95;
+    margin-top:40px;
+  }
+
+  .intro-bottom-symbol{
+    margin-top:30px;
+  }
+
+}
+  
   /* ================= NAMES SECTION ================= */
   #names{
     padding:80px var(--edge) 140px;
@@ -392,7 +632,7 @@
   #details{
     background:var(--maroon);
     color:var(--ivory);
-    padding:130px var(--edge);
+    padding:27px var(--edge);
     text-align:center;
     position:relative;
     overflow:hidden;
@@ -444,7 +684,7 @@
   /* ================= HOSTS ================= */
   #hosts{
     text-align:center;
-    padding:120px var(--edge);
+    padding:60px var(--edge);
   }
   .hosts-label{
     font-family:var(--accent-font);
@@ -504,7 +744,7 @@
 
   footer{
     text-align:center;
-    padding:48px var(--edge) 100px;
+    padding:48px var(--edge) 10px;
     font-family:var(--accent-font);
     font-size:11px;
     letter-spacing:0.2em;
@@ -736,7 +976,7 @@
 
 .invitation-title{
   font-family:var(--accent-font);
-  font-size:13px;
+  font-size:23px;
   letter-spacing:.28em;
 
   color:var(--gold-soft);
@@ -1098,8 +1338,8 @@
   background-image:
     linear-gradient(
       180deg,
-      rgba(250,245,236,.72),
-      rgba(250,245,236,.88)
+      rgba(250,245,236,.12),
+      rgba(250,245,236,.18)
     ),
     url("./images/imagesnames-bg.jpg");
 
@@ -1141,14 +1381,18 @@
 
 /* ================= FINAL ================= */
 
+/* ================= FINAL ================= */
+
 #final{
   position:relative;
   overflow:hidden;
 
   background:
     linear-gradient(
-      rgba(243,236,223,.58),
-      rgba(243,236,223,.58)
+      180deg,
+      rgba(243,236,223,.32) 0%,
+      rgba(243,236,223,.48) 45%,
+      rgba(70,35,35,.38) 100%
     ),
     url("./images/imagesfinal-bg.png");
 
@@ -1156,75 +1400,126 @@
   background-position:center;
 
   text-align:center;
-  padding:125px var(--edge) 110px;
+
+  padding:140px var(--edge) 120px;
 }
 
 .final-content{
   position:relative;
-  max-width:650px;
+  z-index:2;
+
+  max-width:720px;
   margin:0 auto;
 }
 
+
+/* ---------- декоративный верхний элемент ---------- */
+
 .final-orn{
   font-family:var(--serif);
-  font-size:20px;
-  color:var(--gold);
-  margin-bottom:22px;
+
+  font-size:26px;
+
+  color:var(--maroon);
+
+  margin-bottom:25px;
+
+  text-shadow:
+    0 2px 8px rgba(255,255,255,.8),
+    0 4px 16px rgba(0,0,0,.12);
 }
+
+
+/* ---------- маленький заголовок ---------- */
 
 .final-kicker{
   font-family:var(--accent-font);
-  font-size:11px;
+
+  font-size:14px;
+
+  font-weight:500;
+
   letter-spacing:.28em;
+
   color:var(--maroon);
+
+  text-shadow:
+    0 1px 5px rgba(255,255,255,.9),
+    0 2px 10px rgba(0,0,0,.15);
 }
 
+
+/* ---------- главный заголовок ---------- */
+
 .final-title{
-  margin-top:18px;
+  margin-top:20px;
 
   font-family:var(--serif);
+
   font-style:italic;
   font-weight:500;
 
-  font-size:clamp(58px,13vw,88px);
-  line-height:.85;
+  font-size:clamp(62px,14vw,96px);
+
+  line-height:.9;
 
   color:var(--maroon);
 
   text-shadow:
-    0 2px 20px rgba(255,255,255,.5);
+    0 2px 3px rgba(255,255,255,.8),
+    0 5px 18px rgba(0,0,0,.20),
+    0 10px 35px rgba(0,0,0,.12);
 }
+
+
+/* ---------- основной текст ---------- */
 
 .final-text{
-  max-width:500px;
-  margin:35px auto 0;
+  max-width:620px;
+  margin:40px auto 0;
 
   font-family:var(--serif);
-  font-size:clamp(21px,4vw,27px);
-  line-height:1.65;
+  font-size:clamp(26px,5vw,34px);
+  line-height:1.55;
 
-  color:var(--ink);
+  color:#2C241D;
 
   text-shadow:
-    0 1px 12px rgba(255,255,255,.7);
+    0 2px 3px rgba(255,255,255,.85),
+    0 4px 12px rgba(0,0,0,.28),
+    0 8px 24px rgba(0,0,0,.16);
 }
 
+
+/* ---------- дата ---------- */
+
 .final-date{
-  margin-top:30px;
+  margin-top:32px;
 
   font-family:var(--accent-font);
-  font-size:13px;
+
+  font-size:15px;
+
+  font-weight:500;
+
   letter-spacing:.3em;
 
   color:var(--maroon);
+
+  text-shadow:
+    0 1px 7px rgba(255,255,255,.9),
+    0 3px 12px rgba(0,0,0,.15);
 }
 
 
 /* ================= WHATSAPP ================= */
 
 .rsvp-wrap{
-  margin-top:42px;
+  margin-top:50px;
 }
+
+
+/* ---------- кнопка ---------- */
 
 .btn-rsvp{
   position:relative;
@@ -1232,54 +1527,70 @@
 
   display:inline-flex;
   align-items:center;
-  gap:15px;
 
-  min-width:285px;
+  gap:16px;
 
-  padding:16px 20px;
+  min-width:310px;
+
+  padding:18px 22px;
 
   background:#25D366;
+
   color:#fff;
 
-  border-radius:4px;
+  border-radius:5px;
+
+  border:1px solid rgba(255,255,255,.45);
 
   box-shadow:
-    0 12px 30px rgba(37,211,102,.28);
+    0 14px 30px rgba(37,211,102,.30),
+    0 5px 20px rgba(0,0,0,.15);
 
   transition:
-    transform .35s ease,
+    transform .35s cubic-bezier(.16,.75,.22,1),
     box-shadow .35s ease,
     background .35s ease;
 }
+
+
+/* ---------- бегущий блик ---------- */
 
 .btn-rsvp::after{
   content:"";
 
   position:absolute;
+
   top:0;
   left:-100%;
 
-  width:60%;
+  width:55%;
   height:100%;
 
   background:linear-gradient(
     90deg,
     transparent,
-    rgba(255,255,255,.28),
+    rgba(255,255,255,.38),
     transparent
   );
 
   transform:skewX(-20deg);
 
   animation:whatsappShine 4s ease-in-out infinite;
+
+  pointer-events:none;
 }
+
+
+/* ---------- иконка ---------- */
 
 .whatsapp-icon{
   position:relative;
   z-index:2;
 
-  width:34px;
-  height:34px;
+  width:38px;
+  height:38px;
+
+  flex:0 0 38px;
 
   display:flex;
   align-items:center;
@@ -1288,14 +1599,23 @@
   border-radius:50%;
 
   background:#fff;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.12);
+
+  transition:
+    transform .4s cubic-bezier(.16,.75,.22,1);
 }
 
 .whatsapp-icon svg{
-  width:21px;
-  height:21px;
+  width:23px;
+  height:23px;
 
   fill:#25D366;
 }
+
+
+/* ---------- текст кнопки ---------- */
 
 .rsvp-label{
   position:relative;
@@ -1306,19 +1626,30 @@
   align-items:flex-start;
 
   font-family:var(--accent-font);
-  font-size:11px;
-  letter-spacing:.12em;
+
+  font-size:12px;
+
+  font-weight:500;
+
+  letter-spacing:.13em;
+
+  text-align:left;
 }
 
 .rsvp-label small{
-  margin-top:4px;
+  margin-top:5px;
 
   font-family:var(--sans);
-  font-size:9px;
+
+  font-size:10px;
+
   letter-spacing:.04em;
 
-  opacity:.8;
+  opacity:.88;
 }
+
+
+/* ---------- стрелка ---------- */
 
 .rsvp-arrow{
   position:relative;
@@ -1327,23 +1658,38 @@
   margin-left:auto;
 
   font-family:var(--serif);
-  font-size:25px;
+
+  font-size:28px;
 
   animation:rsvpArrow 1.8s ease-in-out infinite;
 }
 
+
+/* ---------- hover ---------- */
+
 .btn-rsvp:hover{
   background:#20bd5a;
 
-  transform:translateY(-4px);
+  transform:translateY(-5px);
 
   box-shadow:
-    0 18px 40px rgba(37,211,102,.35);
+    0 20px 42px rgba(37,211,102,.38),
+    0 8px 24px rgba(0,0,0,.16);
 }
 
-.btn-rsvp:active{
-  transform:scale(.97);
+.btn-rsvp:hover .whatsapp-icon{
+  transform:scale(1.12) rotate(-6deg);
 }
+
+
+/* ---------- active ---------- */
+
+.btn-rsvp:active{
+  transform:translateY(-1px) scale(.98);
+}
+
+
+/* ---------- анимации ---------- */
 
 @keyframes whatsappShine{
 
@@ -1364,19 +1710,91 @@
   }
 
   50%{
-    transform:translateX(5px);
+    transform:translateX(6px);
   }
 
 }
 
+
+/* ================= MOBILE ================= */
+
 @media(max-width:500px){
 
   #final{
-    padding:105px var(--edge) 90px;
+    padding:110px var(--edge) 95px;
+
+    background-position:center;
+  }
+
+  .final-kicker{
+    font-size:12px;
+    letter-spacing:.20em;
+  }
+
+  .final-title{
+    font-size:clamp(56px,16vw,78px);
+  }
+
+   .final-text{
+    font-size:24px;
+    line-height:1.55;
+
+    text-shadow:
+      0 2px 3px rgba(255,255,255,.9),
+      0 4px 12px rgba(0,0,0,.30);
+  }
+
+  .final-date{
+    font-size:13px;
+    letter-spacing:.22em;
+  }
+
+  .rsvp-wrap{
+    margin-top:45px;
+  }
+
+  .btn-rsvp{
+    width:100%;
+    min-width:0;
+
+    padding:17px 17px;
+
+    gap:12px;
+  }
+
+  .whatsapp-icon{
+    width:36px;
+    height:36px;
+
+    flex-basis:36px;
+  }
+
+  .rsvp-label{
+    font-size:10px;
+  }
+
+  .rsvp-label small{
+    font-size:9px;
+  }
+
+  .rsvp-arrow{
+    font-size:25px;
+  }
+
+}
+@media(max-width:500px){
+
+  #final{
+    padding:105px var(--edge) 45px;
   }
 
   .final-text{
-    font-size:21px;
+    font-size:24px;
+    line-height:1.55;
+
+    text-shadow:
+      0 2px 3px rgba(255,255,255,.9),
+      0 4px 12px rgba(0,0,0,.30);
   }
 
   .btn-rsvp{
@@ -1385,6 +1803,85 @@
   }
 
 }
+
+
+.btn-rsvp svg{
+  width:24px;
+  height:24px;
+
+  flex:0 0 24px;
+
+  transition:
+    transform .4s cubic-bezier(.16,.75,.22,1);
+}
+
+.btn-rsvp:hover svg{
+  transform:scale(1.12) rotate(-5deg);
+}
+
+.btn-rsvp span{
+  position:relative;
+}
+
+
+@media (max-width: 700px){
+
+  #final .final-text{
+    max-width:100% !important;
+
+    margin:40px auto 0 !important;
+
+    font-family:var(--serif) !important;
+
+    /* КРУПНЫЙ ТЕКСТ НА ТЕЛЕФОНЕ */
+    font-size:27px !important;
+
+    line-height:1.55 !important;
+
+    font-weight:500 !important;
+
+    color:#2C241D !important;
+
+    /* заметная, но аккуратная тень */
+    text-shadow:
+      0 1px 2px rgba(255,255,255,.95),
+      0 3px 7px rgba(0,0,0,.35),
+      0 7px 18px rgba(0,0,0,.20) !important;
+  }
+
+
+  
+}
+
+@media (max-width:700px){
+
+     #final .final-highlight {
+        display: block;
+        font-family: var(--accent-font);
+        font-size: 20px !important;
+        font-weight: 600;
+        letter-spacing: .16em;
+        line-height: 1.4;
+        color: #ffffff;
+        text-shadow: 0 2px 3px rgb(0 0 0 / 95%), -3px 2px 0px rgba(0, 0, 0, .22);
+        transform: scale(1.08);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1432,11 +1929,154 @@
 </section>
 
 <!-- ================= INTRO ================= -->
+<!-- ================= INTRO ================= -->
+<!-- ================= INTRO ================= -->
 <section id="intro">
-  <div class="kicker" data-aos="fade-up" id="777">САЛАМ</div>
-  <p class="intro-text" data-aos="fade-up" data-aos-delay="150">
-  Бул куттуу күн — Айзаданын туулуп-өскөн алтын уясынан жаңы жашоо сапарына узатылган өзгөчө учуру. Ата-эненин үмүтү, туугандардын сыймыгы жана жакындардын кубанычы ташкындаган бул салтанатка сиздердин күбө болушуңуздарды каалайбыз. Ушул маанилүү жана ыйык мүнөттөрдө жаныбызда болуп, ак тилек, аруу батаңыздарды берип кетүүңүздөрдү өтүнөбүз. </p>
+
+  <div class="intro-inner">
+
+    <div class="intro-kicker" data-aos="fade-up">
+      УРМАТТУУ КОНОКТОР!
+    </div>
+
+    <!-- Кыргызский орнамент-разделитель -->
+    <div class="intro-ornament intro-ornament-top" data-aos="fade-up" data-aos-delay="100">
+      <svg viewBox="0 0 260 46" aria-hidden="true">
+        <path d="M8 23
+                 C22 23 25 10 39 10
+                 C53 10 56 23 70 23
+                 C56 23 53 36 39 36
+                 C25 36 22 23 8 23Z"/>
+
+        <path d="M70 23
+                 C82 23 84 15 94 15
+                 C104 15 106 23 116 23
+                 C106 23 104 31 94 31
+                 C84 31 82 23 70 23Z"/>
+
+        <path d="M144 23
+                 C154 23 156 15 166 15
+                 C176 15 178 23 190 23
+                 C178 23 176 31 166 31
+                 C156 31 154 23 144 23Z"/>
+
+        <path d="M190 23
+                 C204 23 207 10 221 10
+                 C235 10 238 23 252 23
+                 C238 23 235 36 221 36
+                 C207 36 204 23 190 23Z"/>
+
+        <path d="M116 23 Q130 8 144 23 Q130 38 116 23Z"/>
+
+        <circle cx="130" cy="23" r="3"/>
+      </svg>
+    </div>
+
+    <div class="intro-subtitle" data-aos="fade-up" data-aos-delay="180">
+      СИЗДЕРДИ КЫЗЫБЫЗ
+    </div>
+
+    <!-- Имя -->
+    <div class="intro-name-row" data-aos="fade-up" data-aos-delay="300">
+
+      <div class="intro-side-ornament left">
+        <svg viewBox="0 0 130 44" aria-hidden="true">
+          <path d="M4 22 H28
+                   C40 22 42 8 54 8
+                   C66 8 68 22 80 22
+                   C68 22 66 36 54 36
+                   C42 36 40 22 28 22"/>
+
+          <path d="M80 22
+                   C91 22 96 13 106 13
+                   C115 13 120 18 126 22"/>
+
+          <path d="M80 22
+                   C91 22 96 31 106 31
+                   C115 31 120 26 126 22"/>
+        </svg>
+      </div>
+
+      <div class="intro-name">
+      Айзада
+      </div>
+
+      <div class="intro-side-ornament right">
+        <svg viewBox="0 0 130 44" aria-hidden="true">
+          <path d="M126 22 H102
+                   C90 22 88 8 76 8
+                   C64 8 62 22 50 22
+                   C62 22 64 36 76 36
+                   C88 36 90 22 102 22"/>
+
+          <path d="M50 22
+                   C39 22 34 13 24 13
+                   C15 13 10 18 4 22"/>
+
+          <path d="M50 22
+                   C39 22 34 31 24 31
+                   C15 31 10 26 4 22"/>
+        </svg>
+      </div>
+
+    </div>
+
+    <!-- Нижний орнамент -->
+    <div class="intro-ornament intro-ornament-bottom"
+         data-aos="fade-up"
+         data-aos-delay="380">
+
+      <svg viewBox="0 0 220 34" aria-hidden="true">
+        <path d="M10 17
+                 H38
+                 C48 17 51 7 61 7
+                 C71 7 74 17 84 17
+                 C74 17 71 27 61 27
+                 C51 27 48 17 38 17"/>
+
+        <path d="M136 17
+                 C146 17 149 7 159 7
+                 C169 7 172 17 182 17
+                 H210"/>
+
+        <path d="M84 17
+                 Q96 4 110 17
+                 Q124 30 136 17"/>
+
+        <circle cx="110" cy="17" r="2.5"/>
+      </svg>
+
+    </div>
+
+    <!-- Основной текст -->
+    <div class="intro-message"
+         data-aos="fade-up"
+         data-aos-delay="500">
+
+      <div>КЫЗ УЗАТУУ АЗЕМИНЕ АРНАЛГАН</div>
+      <div>САЛТАНАТТУУ АК ДАСТОРКОН</div>
+      <div>ҮСТҮНДӨ КАДЫРЛУУ КОНОГУБУЗ</div>
+      <div>БОЛУП, АК БАТАҢЫЗДАРДЫ БЕРИП</div>
+      <div>КЕТҮҮГӨ ЧАКЫРАБЫЗ!</div>
+
+    </div>
+
+    <!-- Маленький завершающий орнамент -->
+    <div class="intro-bottom-symbol" data-aos="fade-up" data-aos-delay="600">
+      <svg viewBox="0 0 50 50" aria-hidden="true">
+        <path d="M25 5
+                 C31 13 37 16 45 17
+                 C37 21 31 27 25 45
+                 C19 27 13 21 5 17
+                 C13 16 19 13 25 5Z"/>
+        <circle cx="25" cy="25" r="3"/>
+      </svg>
+    </div>
+
+  </div>
+
 </section>
+
 
 <!-- ================= NAMES ================= -->
 <section id="names">
@@ -1447,7 +2087,7 @@
 </section>
 
 <!-- ================= MEANING ================= -->
-<section id="meaning">
+<!-- <section id="meaning">
   <div class="section" style="padding-top:0;padding-bottom:0;">
     <div class="kicker" data-aos="fade-up">САЛТ</div>
     <h2 class="meaning-title" data-aos="fade-up" data-aos-delay="150">Кыз узатуу</h2>
@@ -1460,7 +2100,7 @@
       <span></span>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ================= GALLERY ================= -->
 <!-- <section id="gallery">
@@ -1585,12 +2225,12 @@
     <div class="invitation-line"></div>
 
     <div class="invitation-title">
-      КЕЛИҢИЗДЕР
+      Урматуу конкотор
     </div>
 
     <div class="invitation-text">
-      Сиздерди ушул өзгөчө күнү
-      биз менен бирге болууга күтөбүз.
+      Сиздерди ушул өзгөчө күбүнүз
+      менен бирге болууга күтөбүз.
     </div>
 
     <div class="invitation-date">
@@ -1648,7 +2288,7 @@
     </div>
 
     <div class="final-kicker" data-aos="fade-up" data-aos-delay="100">
-      СҮЙҮНҮЧҮБҮЗДҮ БӨЛҮШҮҢҮЗ
+    <span class="final-highlight">СҮЙҮНҮЧҮБҮЗДҮ БӨЛҮШҮҢҮЗ</span>
     </div>
 
     <h2 class="final-title" data-aos="fade-up" data-aos-delay="180">
@@ -1669,22 +2309,40 @@
 
     <div class="rsvp-wrap" data-aos="fade-up" data-aos-delay="480">
 
-      <a href="#" id="rsvpBtn" class="btn-rsvp">
+<a href="#" id="rsvpBtn" class="btn-rsvp">
 
-        <span class="whatsapp-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.8L.1 24l6.5-1.7c1.6.9 3.5 1.4 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.9 0-3.2-1.2-6.1-3.5-8.3ZM12.1 21.7c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.8 1 1-3.7-.2-.4c-1-1.5-1.5-3.3-1.5-5.1C2.5 6.5 6.8 2.2 12.1 2.2c2.6 0 5 1 6.8 2.8 1.8 1.8 2.8 4.2 2.8 6.8 0 5.4-4.3 9.9-9.6 9.9Zm5.3-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.8-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.1 3.1 1.3 3.3c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/>
-          </svg>
-        </span>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16 3.5
+      C9.1 3.5 3.5 9.1 3.5 16
+      C3.5 18.2 4.1 20.3 5.2 22.1
+      L3.8 28.5
+      L10.4 27.1
+      C12.1 28 14 28.5 16 28.5
+      C22.9 28.5 28.5 22.9 28.5 16
+      C28.5 9.1 22.9 3.5 16 3.5Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"/>
 
-        <span class="rsvp-label">
-          КАТЫШУУНУ ЫРАСТОО
-          <small>WhatsApp аркылуу</small>
-        </span>
+    <path d="M11.3 10.7
+      C11.7 10.3 12.2 10.3 12.6 10.8
+      L14.1 12.8
+      C14.4 13.2 14.3 13.7 14 14.1
+      L13.2 15
+      C14.2 17 15.5 18.3 17.5 19.2
+      L18.4 18.4
+      C18.7 18.1 19.3 18 19.7 18.3
+      L21.7 19.8
+      C22.2 20.2 22.2 20.7 21.8 21.1
+      C21.2 21.8 20.4 22.2 19.5 22.1
+      C15.1 21.6 10.4 16.9 9.9 12.5
+      C9.8 11.6 10.2 10.8 11.3 10.7Z"
+      fill="currentColor"/>
+  </svg>
 
-        <span class="rsvp-arrow">→</span>
+  <span>КАТЫШУУНУ ЫРАСТОО</span>
 
-      </a>
+</a>
 
     </div>
 
@@ -1702,7 +2360,7 @@
   <div class="bar bar3" style="display:none"></div>
 </button>
 <audio id="bgMusic" loop preload="none">
-  <source src="audio/music.mp3" type="audio/mpeg">
+  <source src="./audio/music.mp3" type="audio/mpeg">
 </audio>
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -1803,6 +2461,184 @@ WHATSAPP: замените HOST_WHATSAPP_NUMBER в конце файла на р
 той ээлери в формате 996XXXXXXXXX (без +, без пробелов).
 =====================================================================
 -->
+
+<!-- ================= FALLING ROSE PETALS ================= -->
+<div id="petals-container"></div>
+
+<style>
+  #petals-container{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    pointer-events:none;
+    overflow:hidden;
+  }
+
+  .rose-petal{
+    position:absolute;
+    top:-60px;
+    width:12px;
+    height:18px;
+
+    background:
+      radial-gradient(
+        ellipse at 35% 30%,
+        rgba(255,220,230,.95) 0%,
+        rgba(242,145,170,.9) 45%,
+        rgba(190,75,105,.85) 100%
+      );
+
+    border-radius:70% 30% 70% 30%;
+
+    opacity:0;
+    filter:blur(.15px);
+
+    box-shadow:
+      0 2px 6px rgba(120,30,55,.15);
+
+    animation:
+      petalFall var(--fall-time) linear forwards,
+      petalSway var(--sway-time) ease-in-out infinite alternate;
+  }
+
+  @keyframes petalFall{
+    0%{
+      transform:
+        translate3d(0,-60px,0)
+        rotate(0deg);
+      opacity:0;
+    }
+
+    8%{
+      opacity:var(--petal-opacity);
+    }
+
+    90%{
+      opacity:var(--petal-opacity);
+    }
+
+    100%{
+      transform:
+        translate3d(var(--fall-x),110vh,0)
+        rotate(var(--rotation));
+      opacity:0;
+    }
+  }
+
+  @keyframes petalSway{
+    0%{
+      margin-left:-25px;
+    }
+
+    100%{
+      margin-left:25px;
+    }
+  }
+
+  @media(max-width:700px){
+
+    #petals-container{
+      opacity:.85;
+    }
+
+    .rose-petal{
+      width:9px;
+      height:14px;
+    }
+
+  }
+
+  @media(prefers-reduced-motion:reduce){
+
+    #petals-container{
+      display:none;
+    }
+
+  }
+</style>
+
+<script>
+  const petalsContainer = document.getElementById('petals-container');
+
+  function createPetal(){
+
+    const petal = document.createElement('div');
+
+    petal.className = 'rose-petal';
+
+    const startX = Math.random() * 100;
+
+    const fallX =
+      (Math.random() - 0.5) * 300;
+
+    const fallTime =
+      7 + Math.random() * 8;
+
+    const swayTime =
+      2 + Math.random() * 2;
+
+    const rotation =
+      (Math.random() > 0.5 ? 1 : -1) *
+      (180 + Math.random() * 540);
+
+    const size =
+      0.65 + Math.random() * 0.75;
+
+    const opacity =
+      0.45 + Math.random() * 0.45;
+
+    petal.style.left = startX + '%';
+
+    petal.style.setProperty(
+      '--fall-x',
+      fallX + 'px'
+    );
+
+    petal.style.setProperty(
+      '--fall-time',
+      fallTime + 's'
+    );
+
+    petal.style.setProperty(
+      '--sway-time',
+      swayTime + 's'
+    );
+
+    petal.style.setProperty(
+      '--rotation',
+      rotation + 'deg'
+    );
+
+    petal.style.setProperty(
+      '--petal-opacity',
+      opacity
+    );
+
+    petal.style.transform =
+      `scale(${size})`;
+
+    petalsContainer.appendChild(petal);
+
+    setTimeout(() => {
+      petal.remove();
+    }, (fallTime + 1) * 1000);
+  }
+
+  // Первые лепестки
+  for(let i = 0; i < 8; i++){
+    setTimeout(
+      createPetal,
+      i * 700
+    );
+  }
+
+  // Постепенное появление новых
+  setInterval(
+    createPetal,
+    900
+  );
+</script>
+
 
 </body>
 </html>
