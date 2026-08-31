@@ -259,7 +259,7 @@
   /* ================= INTRO ================= */
   #intro{
     text-align:center;
-    padding:120px var(--edge) 100px;
+    padding:60px var(--edge) 100px;
   }
   .intro-text{
     font-family:var(--serif);
@@ -601,6 +601,556 @@
 .splash-corner{
   z-index:4;
 }
+
+/* ================= BEAUTIFUL DATE ================= */
+
+.beautiful-calendar{
+  position:relative;
+  width:min(440px, 100%);
+  margin:42px auto 0;
+
+  padding:28px 28px 30px;
+
+  background:rgba(250,245,236,.97);
+  color:var(--ink);
+
+  border:1px solid var(--gold-soft);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.28),
+    0 0 0 7px rgba(216,181,113,.08);
+
+  text-align:center;
+}
+
+.beautiful-calendar::before{
+  content:'';
+  position:absolute;
+  inset:7px;
+
+  border:1px solid rgba(182,137,63,.22);
+
+  pointer-events:none;
+}
+
+.calendar-header{
+  position:relative;
+
+  display:flex;
+  justify-content:space-between;
+
+  padding:4px 8px 22px;
+
+  font-family:var(--accent-font);
+  font-size:13px;
+  letter-spacing:.2em;
+
+  color:var(--maroon);
+}
+
+.calendar-header span:last-child{
+  color:var(--gold);
+}
+
+.calendar-weekdays{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+
+  padding:13px 0;
+
+  border-top:1px solid rgba(182,137,63,.25);
+  border-bottom:1px solid rgba(182,137,63,.25);
+
+  font-family:var(--accent-font);
+  font-size:9px;
+  letter-spacing:.08em;
+
+  color:var(--ink-soft);
+}
+
+.calendar-days{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+
+  row-gap:5px;
+
+  padding-top:18px;
+
+  font-family:var(--serif);
+  font-size:19px;
+}
+
+.calendar-days span{
+  position:relative;
+
+  width:38px;
+  height:38px;
+
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.calendar-days .empty{
+  visibility:hidden;
+}
+
+.calendar-days .selected{
+  color:var(--ivory);
+}
+
+.calendar-days .selected::before{
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  border-radius:50%;
+
+  background:var(--maroon);
+
+  box-shadow:
+    0 5px 15px rgba(110,20,35,.35);
+}
+
+.calendar-days .selected b{
+  position:relative;
+  z-index:1;
+
+  font-weight:500;
+}
+
+.date-invitation{
+  max-width:600px;
+  margin:65px auto 0;
+
+  text-align:center;
+}
+
+.invitation-line{
+  width:45px;
+  height:1px;
+
+  margin:0 auto 28px;
+
+  background:var(--gold-soft);
+}
+
+.invitation-title{
+  font-family:var(--accent-font);
+  font-size:13px;
+  letter-spacing:.28em;
+
+  color:var(--gold-soft);
+}
+
+.invitation-text{
+  max-width:480px;
+  margin:22px auto 0;
+
+  font-family:var(--serif);
+  font-size:25px;
+  line-height:1.55;
+
+  color:var(--ivory);
+}
+
+.invitation-date{
+  margin-top:28px;
+
+  font-family:var(--accent-font);
+  font-size:13px;
+  letter-spacing:.2em;
+
+  color:var(--gold-soft);
+}
+
+.invitation-time{
+  margin-top:7px;
+
+  font-family:var(--serif);
+  font-size:38px;
+  font-style:italic;
+
+  color:var(--ivory);
+}
+
+.location-block{
+  max-width:620px;
+  margin:65px auto 0;
+
+  padding-top:42px;
+
+  border-top:1px solid rgba(216,181,113,.25);
+
+  text-align:center;
+}
+
+.details-label{
+  font-family:var(--accent-font);
+  font-size:11px;
+  letter-spacing:.3em;
+
+  color:var(--gold-soft);
+}
+
+.details-address{
+  margin-top:13px;
+
+  font-family:var(--serif);
+  font-size:24px;
+  line-height:1.45;
+
+  color:var(--ivory);
+}
+
+.map-button{
+  position:relative;
+  overflow:hidden;
+
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  margin-top:30px;
+  padding:15px 24px;
+
+  border:1px solid rgba(216,181,113,.6);
+
+  color:var(--ivory);
+
+  font-family:var(--accent-font);
+  font-size:10px;
+  letter-spacing:.17em;
+
+  transition:
+    transform .35s cubic-bezier(.16,.75,.22,1),
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+/* золотая вспышка */
+.map-button::after{
+  content:'';
+
+  position:absolute;
+  top:0;
+  left:-120%;
+
+  width:80%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(216,181,113,.25),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+  transition:left .7s ease;
+}
+
+.map-button:hover::after{
+  left:140%;
+}
+
+.map-button span{
+  font-size:22px;
+  color:var(--gold-soft);
+
+  transition:
+    transform .4s cubic-bezier(.16,.75,.22,1);
+}
+
+.map-button strong{
+  font-size:18px;
+  color:var(--gold-soft);
+  font-weight:400;
+
+  transition:
+    transform .4s cubic-bezier(.16,.75,.22,1);
+}
+
+/* наведение */
+.map-button:hover{
+  background:rgba(216,181,113,.10);
+  border-color:var(--gold-soft);
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.18),
+    0 0 20px rgba(216,181,113,.08);
+}
+
+.map-button:hover span{
+  transform:scale(1.12) rotate(-8deg);
+}
+
+.map-button:hover strong{
+  transform:translateX(6px);
+}
+
+/* НАЖАТИЕ */
+.map-button:active{
+  transform:translateY(0) scale(.93);
+
+  background:rgba(216,181,113,.22);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.25);
+}
+
+.map-button:active span{
+  transform:scale(.85);
+}
+
+.map-button:active strong{
+  transform:translateX(10px);
+}
+
+@media(max-width:500px){
+
+  .beautiful-calendar{
+    padding:25px 16px 27px;
+  }
+
+  .calendar-days span{
+    width:34px;
+    height:34px;
+  }
+
+  .invitation-text{
+    font-size:22px;
+  }
+
+  .details-address{
+    font-size:21px;
+  }
+
+}
+/* ===== АНИМАЦИЯ КНОПКИ КАРТЫ ===== */
+
+.map-button-animated{
+  position:relative;
+  overflow:hidden;
+
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  margin-top:30px;
+  padding:16px 26px;
+
+  border:1px solid var(--gold-soft);
+
+  color:var(--ivory);
+  background:rgba(216,181,113,.08);
+
+  font-family:var(--accent-font);
+  font-size:10px;
+  letter-spacing:.17em;
+
+  box-shadow:0 0 0 rgba(216,181,113,0);
+
+  animation:mapButtonPulse 3s ease-in-out infinite;
+
+  transition:
+    background .4s ease,
+    transform .4s ease,
+    box-shadow .4s ease;
+}
+
+
+/* Бегущий золотой блик */
+.map-button-animated::after{
+  content:"";
+
+  position:absolute;
+  top:0;
+  left:-120%;
+
+  width:70%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(216,181,113,.35),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+
+  animation:mapButtonShine 3.5s ease-in-out infinite;
+
+  pointer-events:none;
+}
+
+
+/* Только элементы ВНУТРИ кнопки карты */
+.map-button-animated span{
+  position:relative;
+  z-index:2;
+
+  font-size:22px;
+  color:var(--gold-soft);
+
+  animation:mapButtonIcon 2.5s ease-in-out infinite;
+}
+
+.map-button-animated strong{
+  position:relative;
+  z-index:2;
+
+  font-size:18px;
+  font-weight:400;
+
+  color:var(--gold-soft);
+
+  animation:mapButtonArrow 1.8s ease-in-out infinite;
+}
+
+
+/* Пульсация всей кнопки */
+@keyframes mapButtonPulse{
+
+  0%,100%{
+    box-shadow:
+      0 0 0 rgba(216,181,113,0);
+  }
+
+  50%{
+    box-shadow:
+      0 0 22px rgba(216,181,113,.18);
+  }
+}
+
+
+/* Блик */
+@keyframes mapButtonShine{
+
+  0%,35%{
+    left:-120%;
+  }
+
+  65%,100%{
+    left:140%;
+  }
+}
+
+
+/* Иконка */
+@keyframes mapButtonIcon{
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.12);
+  }
+}
+
+
+/* Стрелка */
+@keyframes mapButtonArrow{
+
+  0%,100%{
+    transform:translateX(0);
+  }
+
+  50%{
+    transform:translateX(5px);
+  }
+}
+
+
+/* При наведении */
+.map-button-animated:hover{
+  background:rgba(216,181,113,.16);
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.2),
+    0 0 25px rgba(216,181,113,.2);
+
+  animation:none;
+}
+
+.map-button-animated:hover span,
+.map-button-animated:hover strong{
+  animation:none;
+}
+
+.map-button-animated:hover strong{
+  transform:translateX(7px);
+}
+
+
+/* ===== ФОН БЛОКА NAMES ===== */
+
+#names{
+  position:relative;
+  overflow:hidden;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(250,245,236,.72),
+      rgba(250,245,236,.88)
+    ),
+    url("./images/imagesnames-bg.jpg");
+
+  background-size:cover;
+  background-position:center;
+}
+
+/* декоративное свечение поверх фотографии */
+#names::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(216,181,113,.12),
+      transparent 55%
+    );
+
+  pointer-events:none;
+}
+
+/* чтобы текст был НАД фотографией */
+#names .names-stack{
+  position:relative;
+  z-index:2;
+}
+
+
+
+
+
+
+.kicker {
+  font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -608,7 +1158,7 @@
 <!-- ================= SPLASH ================= -->
 <div id="splash">
   <div class="splash-photo">
-    <img src="./images/splash-aizada.jpg" alt="">
+    <img src="https://i.postimg.cc/bJr071Mk/Bez-nazvania.jpg" alt="">
   </div>
   <div class="splash-inner">
     <svg class="splash-orn" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
@@ -628,7 +1178,7 @@
 <!-- ================= HERO ================= -->
 <section id="hero">
   <div class="hero-media">
-    <img src="./images/hero-aizada-back.jpg" alt="Айзада в традиционном красном кыргызском наряде, вид со спины">
+    <img src="https://i.pinimg.com/736x/fe/81/fa/fe81fada50d99787025ad8d2d9262a26.jpg" alt="Айзада в традиционном красном кыргызском наряде, вид со спины">
   </div>
   <div class="hero-orn-frame"></div>
   <div class="hero-text">
@@ -642,12 +1192,9 @@
 
 <!-- ================= INTRO ================= -->
 <section id="intro">
-  <div class="kicker" data-aos="fade-up">САЛАМ</div>
+  <div class="kicker" data-aos="fade-up" id="777">САЛАМ</div>
   <p class="intro-text" data-aos="fade-up" data-aos-delay="150">
-    Бул күн — Айзаданын өз үйүнөн жаңы үй-бүлөгө узатылган өзгөчө күнү.
-    Ата-эне, туугандар жана жакындар бул кубанычты жана сыймыкты силер менен
-    бөлүшкүсү келет. Ушул маанилүү учурда жаныбызда болгонуңарды каалайбыз.
-  </p>
+  Бул куттуу күн — Айзаданын туулуп-өскөн алтын уясынан жаңы жашоо сапарына узатылган өзгөчө учуру. Ата-эненин үмүтү, туугандардын сыймыгы жана жакындардын кубанычы ташкындаган бул салтанатка сиздердин күбө болушуңуздарды каалайбыз. Ушул маанилүү жана ыйык мүнөттөрдө жаныбызда болуп, ак тилек, аруу батаңыздарды берип кетүүңүздөрдү өтүнөбүз. </p>
 </section>
 
 <!-- ================= NAMES ================= -->
@@ -664,9 +1211,7 @@
     <div class="kicker" data-aos="fade-up">САЛТ</div>
     <h2 class="meaning-title" data-aos="fade-up" data-aos-delay="150">Кыз узатуу</h2>
     <p class="meaning-body" data-aos="fade-up" data-aos-delay="300">
-      Бул — Айзаданын ата конушунан, туулуп-өскөн үйүнөн жаңы үй-бүлөгө
-      узатылган салттуу той. Кыргыз элинин байыркы каадасы боюнча,
-      бул күндө үй-бүлө өз кызын сый-урмат менен, батасын берип узатат.
+     Бул салтанат — Айзада кызыбыздын кут конгон ата конушунан, учкан алтын уясынан жаңы бүлө очогуна аттанган салттуу кыз узатуу тою. Кылымдарды карыткан кыргыз элинин асыл нарк-насилине ылайык, бул касиеттүү күндө ата-энеси өз перзентин сый-урмат менен аздектеп, ак тилек, улуу бата менен жаңы турмуш жолуна аттандырат.
     </p>
     <div class="meaning-divider" data-aos="fade-up" data-aos-delay="450">
       <span></span>
@@ -720,26 +1265,136 @@
 
 <!-- ================= DETAILS ================= -->
 <section id="details">
-  <div class="kicker" style="color:var(--gold-soft)" data-aos="fade-up">КАЧАН</div>
-  <div class="details-date" data-aos="fade-up" data-aos-delay="150">03 ОКТЯБРЬ</div>
-  <div class="details-time" data-aos="fade-up" data-aos-delay="250">2026 · 11:00</div>
 
-  <div class="details-row" data-aos="fade-up" data-aos-delay="350">
-    <div class="details-label">ДАРЕГИ</div>
-    <div class="details-address">Алма-Бак району,<br>Чыргайлуу көчөсү 35</div>
+  <div class="kicker" style="color:var(--gold-soft)" data-aos="fade-up">
+    БУЛ КҮНДҮ БИЗ МЕНЕН БИРГЕ ӨТКӨРҮҢҮЗ
   </div>
 
-  <svg class="venue-mark" viewBox="0 0 64 64" data-aos="fade-up" data-aos-delay="450">
-    <path d="M32 6 L54 20 V44 L32 58 L10 44 V20 Z"/>
-    <circle cx="32" cy="32" r="7"/>
-  </svg>
+  <!-- КАЛЕНДАРЬ -->
+  <div class="beautiful-calendar" data-aos="zoom-out" data-aos-delay="150">
+
+    <div class="calendar-header">
+      <span>ОКТЯБРЬ</span>
+      <span>2026</span>
+    </div>
+
+    <div class="calendar-weekdays">
+      <span>ДШ</span>
+      <span>ШШ</span>
+      <span>ШР</span>
+      <span>БШ</span>
+      <span>ЖМ</span>
+      <span>ИШ</span>
+      <span>ЖК</span>
+    </div>
+
+    <div class="calendar-days">
+
+      <span class="empty"></span>
+      <span class="empty"></span>
+      <span class="empty"></span>
+      <span>1</span>
+      <span>2</span>
+
+      <span class="selected">
+        <b>3</b>
+      </span>
+
+      <span>4</span>
+
+      <span>5</span>
+      <span>6</span>
+      <span>7</span>
+      <span>8</span>
+      <span>9</span>
+      <span>10</span>
+      <span>11</span>
+
+      <span>12</span>
+      <span>13</span>
+      <span>14</span>
+      <span>15</span>
+      <span>16</span>
+      <span>17</span>
+      <span>18</span>
+
+      <span>19</span>
+      <span>20</span>
+      <span>21</span>
+      <span>22</span>
+      <span>23</span>
+      <span>24</span>
+      <span>25</span>
+
+      <span>26</span>
+      <span>27</span>
+      <span>28</span>
+      <span>29</span>
+      <span>30</span>
+      <span>31</span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ПРИГЛАШЕНИЕ НА ДЕНЬ -->
+  <div class="date-invitation" data-aos="fade-up" data-aos-delay="350">
+
+    <div class="invitation-line"></div>
+
+    <div class="invitation-title">
+      КЕЛИҢИЗДЕР
+    </div>
+
+    <div class="invitation-text">
+      Сиздерди ушул өзгөчө күнү
+      биз менен бирге болууга күтөбүз.
+    </div>
+
+    <div class="invitation-date">
+      03 ОКТЯБРЬ 2026
+    </div>
+
+    <div class="invitation-time">
+      11:00
+    </div>
+
+  </div>
+
+
+  <!-- АДРЕС -->
+  <div class="location-block" data-aos="fade-up" data-aos-delay="500">
+
+    <div class="details-label">
+      ДАРЕГИ
+    </div>
+
+    <div class="details-address">
+      Алма-Бак району,<br>
+      Чыргайлуу көчөсү 35
+    </div>
+
+ <a
+  href="https://2gis.kg/naryn/geo/70030076644202175?m=75.944017%2C41.425664%2F17.17"
+  target="_blank"
+  rel="noopener"
+  class="map-button-animated"
+>
+  <span>⌖</span>
+  КАРТАДАН КӨРҮҮ
+  <strong>→</strong>
+</a>
+
+  </div>
+
 </section>
 
 <!-- ================= HOSTS ================= -->
 <section id="hosts">
   <div class="hosts-label" data-aos="fade-up">ТОЙ ЭЭЛЕРИ</div>
   <div class="hosts-names" data-aos="fade-up" data-aos-delay="150">Райымбек &amp; Венера</div>
-  <div class="hosts-note" data-aos="fade-up" data-aos-delay="300">Кыздарынын узатуу тоюна чакырышат</div>
+  <div class="hosts-note" data-aos="fade-up" data-aos-delay="300">Кызын узатуу тоюна чакырышат</div>
 </section>
 
 <!-- ================= FINAL / RSVP ================= -->
@@ -771,7 +1426,7 @@
 <script>
   // ---------- CONFIGURABLE DATA ----------
   const HOST_WHATSAPP_NUMBER = "996700000000"; // замените на реальный номер той ээлери, формат без "+" и пробелов
-  const RSVP_MESSAGE = "Саламатсызбы! Кыз узатуу тоюңуздарга чакырганыңыздар үчүн чоң рахмат. 03.10.2026 күнү саат 11:00дө катышууга келебиз.";
+  const RSVP_MESSAGE = "Саламатсызбы! Кыз узатуу тоюңуздарга чакырганыңыздар үчүн чоң рахмат. 03.10.2026 күнү саат 11:00дө катышууга келебиз. Биз:";
 
   AOS.init({ duration: 1000, once: true, offset: 60, easing: 'ease-out-cubic' });
 
