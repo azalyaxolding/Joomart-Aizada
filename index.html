@@ -471,10 +471,22 @@
 
   /* ================= FINAL ================= */
   #final{
-    background:var(--ivory-deep);
-    text-align:center;
-    padding:130px var(--edge) 90px;
-  }
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      rgba(243,236,223,0.58),
+      rgba(243,236,223,0.58)
+    ),
+    url("./images/imagesfinal-bg.png");
+
+  background-size:cover;
+  background-position:center;
+
+  text-align:center;
+  padding:130px var(--edge) 90px;
+}
   .final-text{
     font-family:var(--serif);
     font-size:clamp(22px,4vw,30px);
@@ -486,25 +498,9 @@
   .rsvp-wrap{
     margin-top:56px;
   }
-  .btn-rsvp{
-    display:inline-block;
-    background:#3FA24A;
-    color:#fff;
-    font-family:var(--accent-font);
-    font-size:14px;
-    letter-spacing:0.1em;
-    padding:20px 40px;
-    border-radius:2px;
-    box-shadow:0 14px 32px -12px rgba(63,162,74,0.55);
-    transition:transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-  }
-  .btn-rsvp:hover{transform:translateY(-2px); background:#379a42; box-shadow:0 18px 38px -12px rgba(63,162,74,0.6);}
-  .rsvp-sub{
-    margin-top:18px;
-    font-size:12px;
-    letter-spacing:0.08em;
-    color:var(--ink-soft);
-  }
+ 
+  /* .btn-rsvp:hover{transform:translateY(-2px); background:#379a42; box-shadow:0 18px 38px -12px rgba(63,162,74,0.6);}
+   */
 
   footer{
     text-align:center;
@@ -1143,7 +1139,252 @@
   font-size: 24px;
 }
 
+/* ================= FINAL ================= */
 
+#final{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      rgba(243,236,223,.58),
+      rgba(243,236,223,.58)
+    ),
+    url("./images/imagesfinal-bg.png");
+
+  background-size:cover;
+  background-position:center;
+
+  text-align:center;
+  padding:125px var(--edge) 110px;
+}
+
+.final-content{
+  position:relative;
+  max-width:650px;
+  margin:0 auto;
+}
+
+.final-orn{
+  font-family:var(--serif);
+  font-size:20px;
+  color:var(--gold);
+  margin-bottom:22px;
+}
+
+.final-kicker{
+  font-family:var(--accent-font);
+  font-size:11px;
+  letter-spacing:.28em;
+  color:var(--maroon);
+}
+
+.final-title{
+  margin-top:18px;
+
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+
+  font-size:clamp(58px,13vw,88px);
+  line-height:.85;
+
+  color:var(--maroon);
+
+  text-shadow:
+    0 2px 20px rgba(255,255,255,.5);
+}
+
+.final-text{
+  max-width:500px;
+  margin:35px auto 0;
+
+  font-family:var(--serif);
+  font-size:clamp(21px,4vw,27px);
+  line-height:1.65;
+
+  color:var(--ink);
+
+  text-shadow:
+    0 1px 12px rgba(255,255,255,.7);
+}
+
+.final-date{
+  margin-top:30px;
+
+  font-family:var(--accent-font);
+  font-size:13px;
+  letter-spacing:.3em;
+
+  color:var(--maroon);
+}
+
+
+/* ================= WHATSAPP ================= */
+
+.rsvp-wrap{
+  margin-top:42px;
+}
+
+.btn-rsvp{
+  position:relative;
+  overflow:hidden;
+
+  display:inline-flex;
+  align-items:center;
+  gap:15px;
+
+  min-width:285px;
+
+  padding:16px 20px;
+
+  background:#25D366;
+  color:#fff;
+
+  border-radius:4px;
+
+  box-shadow:
+    0 12px 30px rgba(37,211,102,.28);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+}
+
+.btn-rsvp::after{
+  content:"";
+
+  position:absolute;
+  top:0;
+  left:-100%;
+
+  width:60%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.28),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+
+  animation:whatsappShine 4s ease-in-out infinite;
+}
+
+.whatsapp-icon{
+  position:relative;
+  z-index:2;
+
+  width:34px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#fff;
+}
+
+.whatsapp-icon svg{
+  width:21px;
+  height:21px;
+
+  fill:#25D366;
+}
+
+.rsvp-label{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+
+  font-family:var(--accent-font);
+  font-size:11px;
+  letter-spacing:.12em;
+}
+
+.rsvp-label small{
+  margin-top:4px;
+
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:.04em;
+
+  opacity:.8;
+}
+
+.rsvp-arrow{
+  position:relative;
+  z-index:2;
+
+  margin-left:auto;
+
+  font-family:var(--serif);
+  font-size:25px;
+
+  animation:rsvpArrow 1.8s ease-in-out infinite;
+}
+
+.btn-rsvp:hover{
+  background:#20bd5a;
+
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 18px 40px rgba(37,211,102,.35);
+}
+
+.btn-rsvp:active{
+  transform:scale(.97);
+}
+
+@keyframes whatsappShine{
+
+  0%,45%{
+    left:-100%;
+  }
+
+  65%,100%{
+    left:140%;
+  }
+
+}
+
+@keyframes rsvpArrow{
+
+  0%,100%{
+    transform:translateX(0);
+  }
+
+  50%{
+    transform:translateX(5px);
+  }
+
+}
+
+@media(max-width:500px){
+
+  #final{
+    padding:105px var(--edge) 90px;
+  }
+
+  .final-text{
+    font-size:21px;
+  }
+
+  .btn-rsvp{
+    width:100%;
+    min-width:0;
+  }
+
+}
 
 
 
@@ -1399,14 +1640,56 @@
 
 <!-- ================= FINAL / RSVP ================= -->
 <section id="final">
-  <p class="final-text" data-aos="fade-up">
-    Биз үчүн бул өзгөчө күндө сиздердин катышууңуздар чоң мааниге ээ.
-    Сиздерди кыз узатуу тоюбузда күтөбүз.
-  </p>
-  <div class="rsvp-wrap" data-aos="fade-up" data-aos-delay="200">
-    <a href="#" id="rsvpBtn" class="btn-rsvp">КАТЫШУУНУ ЫРАСТОО</a>
-    <div class="rsvp-sub">WhatsApp аркылуу ырастоо</div>
+
+  <div class="final-content">
+
+    <div class="final-orn" data-aos="fade-up">
+      ✦
+    </div>
+
+    <div class="final-kicker" data-aos="fade-up" data-aos-delay="100">
+      СҮЙҮНҮЧҮБҮЗДҮ БӨЛҮШҮҢҮЗ
+    </div>
+
+    <h2 class="final-title" data-aos="fade-up" data-aos-delay="180">
+      Сиздерди<br>
+      күтөбүз
+    </h2>
+
+    <p class="final-text" data-aos="fade-up" data-aos-delay="280">
+      Бул өзгөчө күндө жаныбызда болуп,
+      кубанычыбызды биз менен бирге
+      бөлүшүп кетсеңиздер,
+      биз үчүн чоң сыймык.
+    </p>
+
+    <div class="final-date" data-aos="fade-up" data-aos-delay="380">
+      03 · 10 · 2026
+    </div>
+
+    <div class="rsvp-wrap" data-aos="fade-up" data-aos-delay="480">
+
+      <a href="#" id="rsvpBtn" class="btn-rsvp">
+
+        <span class="whatsapp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.1 1.6 5.8L.1 24l6.5-1.7c1.6.9 3.5 1.4 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.9 0-3.2-1.2-6.1-3.5-8.3ZM12.1 21.7c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.8 1 1-3.7-.2-.4c-1-1.5-1.5-3.3-1.5-5.1C2.5 6.5 6.8 2.2 12.1 2.2c2.6 0 5 1 6.8 2.8 1.8 1.8 2.8 4.2 2.8 6.8 0 5.4-4.3 9.9-9.6 9.9Zm5.3-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.8-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.1 3.1 1.3 3.3c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/>
+          </svg>
+        </span>
+
+        <span class="rsvp-label">
+          КАТЫШУУНУ ЫРАСТОО
+          <small>WhatsApp аркылуу</small>
+        </span>
+
+        <span class="rsvp-arrow">→</span>
+
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
 <footer>ЖООМАРТ &amp; АЙЗАДА · 03.10.2026</footer>
