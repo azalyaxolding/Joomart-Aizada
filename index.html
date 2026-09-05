@@ -3936,5 +3936,149 @@ footer {
 })();
 </script>
 
+<!-- ================================================================
+     WOW PASS 4 — Splash "Aurora": drifting golden petals, a soft
+     shimmer of light across the title & bride's name, and a
+     hand-drawn golden frame that traces itself in around the card.
+     Purely additive — no image paths touched, nothing else changed.
+     ================================================================ -->
+<style>
+  /* ---------- drifting golden petals ---------- */
+  #az-petal-field{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+  .az-petal{
+    position:absolute;
+    top:-8%;
+    left:var(--pl,50%);
+    width:var(--pw,9px);
+    height:var(--pw,9px);
+    background:linear-gradient(135deg, var(--az-gold-bright,#F4DDAA) 0%, var(--az-gold,#D8B571) 55%, rgba(110,20,35,.45) 100%);
+    border-radius:0 60% 0 60%;
+    opacity:0;
+    filter:drop-shadow(0 2px 5px rgba(40,10,10,.18));
+    animation:azPetalFall var(--pt,10s) linear forwards var(--pd,0s);
+    will-change:transform,opacity;
+  }
+  @keyframes azPetalFall{
+    0%{opacity:0; transform:translate3d(0,0,0) rotate(0deg);}
+    8%{opacity:.9;}
+    90%{opacity:.65;}
+    100%{opacity:0; transform:translate3d(var(--px,30px),560px,0) rotate(var(--pr,340deg));}
+  }
+
+  /* ---------- shimmering light over the title & bride's name ---------- */
+  .splash-eventname,
+  .splash-bride-name{position:relative;}
+  .splash-eventname::after,
+  .splash-bride-name::after{
+    content:attr(data-shine);
+    position:absolute; inset:0;
+    background-image:linear-gradient(100deg, transparent 38%, rgba(255,255,255,.95) 50%, transparent 62%);
+    background-size:240% 100%;
+    background-position:-140% 0;
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
+    pointer-events:none;
+    opacity:0;
+    animation:azTitleShimmerIn .1s linear forwards 4.6s, azTitleShimmer 4.5s ease-in-out infinite 5.2s;
+  }
+  @keyframes azTitleShimmerIn{ to{opacity:1;} }
+  @keyframes azTitleShimmer{
+    0%,55%{background-position:-140% 0;}
+    100%{background-position:200% 0;}
+  }
+
+  /* ---------- hand-drawn golden frame tracing itself in ---------- */
+  #az-frame{position:absolute; inset:22px; z-index:6; pointer-events:none; overflow:visible;}
+  #az-frame rect{
+    fill:none;
+    stroke:var(--az-gold-bright,#D8B571);
+    stroke-width:.6;
+    vector-effect:non-scaling-stroke;
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    opacity:.7;
+    animation:azFrameDraw 2.6s cubic-bezier(.16,.8,.25,1) forwards 1.1s;
+  }
+  #az-frame rect.az-frame-inner{
+    stroke-width:.35;
+    opacity:.38;
+    stroke-dasharray:380;
+    stroke-dashoffset:380;
+    animation:azFrameDraw 2.6s cubic-bezier(.16,.8,.25,1) forwards 1.4s;
+  }
+  @keyframes azFrameDraw{ to{stroke-dashoffset:0;} }
+
+  @media (max-width:700px){
+    .az-petal{ width:calc(var(--pw,9px) * .85); height:calc(var(--pw,9px) * .85); }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #az-petal-field{display:none !important;}
+    .splash-eventname::after, .splash-bride-name::after{display:none !important;}
+    #az-frame rect{animation:none !important; stroke-dashoffset:0 !important;}
+  }
+</style>
+<script>
+(() => {
+  'use strict';
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* Shimmer overlay mirrors the real text via a data attribute */
+  ['.splash-eventname', '.splash-bride-name'].forEach((sel) => {
+    const el = splash.querySelector(sel);
+    if (el) el.setAttribute('data-shine', el.textContent.trim());
+  });
+
+  /* Hand-drawn golden double frame around the card */
+  const inner = splash.querySelector('.splash-inner');
+  if (inner) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('id', 'az-frame');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    const outer = document.createElementNS(ns, 'rect');
+    outer.setAttribute('x', '0.5'); outer.setAttribute('y', '0.5');
+    outer.setAttribute('width', '99'); outer.setAttribute('height', '99');
+    const innerRect = document.createElementNS(ns, 'rect');
+    innerRect.setAttribute('class', 'az-frame-inner');
+    innerRect.setAttribute('x', '3.2'); innerRect.setAttribute('y', '3.2');
+    innerRect.setAttribute('width', '93.6'); innerRect.setAttribute('height', '93.6');
+    svg.appendChild(outer);
+    svg.appendChild(innerRect);
+    inner.appendChild(svg);
+  }
+
+  if (reduce) return;
+
+  /* Drifting petals, gentle & continuous while the splash is visible */
+  const field = document.createElement('div');
+  field.id = 'az-petal-field';
+  splash.appendChild(field);
+
+  const mobile = window.matchMedia('(max-width: 700px)').matches;
+  let petalTimer;
+
+  const dropPetal = () => {
+    if (splash.classList.contains('hide')) { clearInterval(petalTimer); return; }
+    const p = document.createElement('span');
+    p.className = 'az-petal';
+    p.style.setProperty('--pl', (6 + Math.random() * 88).toFixed(1) + '%');
+    p.style.setProperty('--pw', ((mobile ? 6 : 7) + Math.random() * 6).toFixed(1) + 'px');
+    p.style.setProperty('--pt', (8 + Math.random() * 5).toFixed(2) + 's');
+    p.style.setProperty('--pd', (Math.random() * 0.6).toFixed(2) + 's');
+    p.style.setProperty('--px', ((Math.random() - .5) * 90).toFixed(1) + 'px');
+    p.style.setProperty('--pr', (240 + Math.random() * 260).toFixed(0) + 'deg');
+    field.appendChild(p);
+    setTimeout(() => p.remove(), 15000);
+  };
+
+  for (let i = 0; i < 4; i++) setTimeout(dropPetal, i * 550);
+  petalTimer = setInterval(dropPetal, 900);
+})();
+</script>
+
 </body>
 </html>
